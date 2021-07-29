@@ -5,6 +5,8 @@ import (
 	stdlog "log"
 	"net/http"
 	"os"
+
+	"github.com/draymonders/distributed/common"
 )
 
 var log *stdlog.Logger
@@ -41,6 +43,7 @@ func RegisterHandlers() {
 		}
 		return
 	})
+	http.HandleFunc("/ping", common.HeartBeatFunc)
 }
 
 func writeLog(msg string) {
